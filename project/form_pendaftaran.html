@@ -5,53 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Form Data Mahasiswa</title>
   <style>
-    /* ===== THEME TOKENS ===== */
-    :root{
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-      --radius: 18px;
-    }
+    :root{ --shadow: 0 18px 50px rgba(0,0,0,.45); --radius: 28px; }
 
-    /* Default: DARK */
     body[data-theme="dark"]{
-      --bg1:#0f172a;
-      --bg2:#111827;
-      --card:#0b1220cc;
-      --stroke:#ffffff22;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#22c55e;
-      --accent2:#60a5fa;
-      --danger:#fb7185;
-      --overlay: rgba(0,0,0,.55);
-      --modalbg: rgba(10, 15, 25, .92);
+      --bg1:#0f172a; --bg2:#111827; --card:#0b1220cc; --stroke:#ffffff22;
+      --text:#e5e7eb; --muted:#9ca3af; --accent:#22c55e; --accent2:#60a5fa;
+      --danger:#fb7185; --overlay: rgba(0,0,0,.55); --modalbg: rgba(10, 15, 25, .92);
       --theadbg: rgba(20, 30, 50, .95);
     }
-
-    /* LIGHT */
     body[data-theme="light"]{
-      --bg1:#f8fafc;
-      --bg2:#eef2ff;
-      --card:rgba(255,255,255,.75);
-      --stroke:rgba(2,6,23,.12);
-      --text:#0f172a;
-      --muted:#475569;
-      --accent:#16a34a;
-      --accent2:#2563eb;
-      --danger:#e11d48;
-      --overlay: rgba(15,23,42,.35);
-      --modalbg: rgba(255,255,255,.92);
+      --bg1:#f8fafc; --bg2:#eef2ff; --card:rgba(255,255,255,.75); --stroke:rgba(2,6,23,.12);
+      --text:#0f172a; --muted:#475569; --accent:#16a34a; --accent2:#2563eb;
+      --danger:#e11d48; --overlay: rgba(15,23,42,.35); --modalbg: rgba(255,255,255,.92);
       --theadbg: rgba(241,245,249,.95);
     }
 
     *{ box-sizing:border-box; }
     body{
-      margin:0;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:28px 14px;
-      color:var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0; min-height:100vh; display:grid; place-items:center; padding:28px 14px;
+      color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
         radial-gradient(1000px 500px at 20% 15%, color-mix(in srgb, var(--accent) 25%, transparent), transparent 60%),
         radial-gradient(900px 600px at 85% 10%, color-mix(in srgb, var(--accent2) 25%, transparent), transparent 55%),
@@ -62,54 +34,25 @@
 
     .wrap{ width:min(920px, 96vw); }
     .card{
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(10px);
-      overflow:hidden;
+      background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius);
+      box-shadow:var(--shadow); backdrop-filter: blur(10px); overflow:hidden;
     }
     .header{
-      padding:22px 22px 16px;
-      border-bottom:1px solid var(--stroke);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
+      padding:22px 22px 16px; border-bottom:1px solid var(--stroke);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
     }
     .titlebox{ display:flex; flex-direction:column; gap:6px; }
     .title{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-weight:800;
-      display:flex;
-      align-items:center;
-      gap:10px;
+      margin:0; font-size:18px; letter-spacing:.08em; text-transform:uppercase; font-weight:800;
+      display:flex; align-items:center; gap:10px;
     }
     .subtitle{ margin:0; color:var(--muted); font-size:13px; line-height:1.4; }
 
-    /* ===== Theme Toggle Button ===== */
-    .top-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex:0 0 auto;
-    }
+    .top-actions{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
     .toggle{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.08);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:14px;
-      cursor:pointer;
-      font-weight:900;
-      letter-spacing:.04em;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      transition: transform .12s ease, background .12s ease;
+      border:1px solid var(--stroke); background: rgba(255,255,255,.08); color:var(--text);
+      padding:10px 12px; border-radius:14px; cursor:pointer; font-weight:900; letter-spacing:.04em;
+      display:inline-flex; align-items:center; gap:10px; transition: transform .12s ease, background .12s ease;
       user-select:none;
     }
     .toggle:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); }
@@ -124,40 +67,23 @@
     }
 
     .field{
-      padding:14px 14px 12px;
-      border:1px solid var(--stroke);
-      border-radius:14px;
+      padding:14px 14px 12px; border:1px solid var(--stroke); border-radius:14px;
       background:rgba(255,255,255,.04);
       transition: transform .15s ease, border-color .15s ease, background .15s ease;
     }
-    body[data-theme="light"] .field{
-      background: rgba(2,6,23,.03);
-    }
+    body[data-theme="light"] .field{ background: rgba(2,6,23,.03); }
     .field:hover{
-      transform: translateY(-1px);
-      background:rgba(255,255,255,.06);
+      transform: translateY(-1px); background:rgba(255,255,255,.06);
       border-color: color-mix(in srgb, var(--stroke) 50%, rgba(255,255,255,.35));
     }
 
     label{
-      display:block;
-      font-size:12px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 8px;
-      font-weight:700;
+      display:block; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--muted); margin:0 0 8px; font-weight:700;
     }
     input, textarea{
-      width:100%;
-      border:none;
-      outline:none;
-      background:transparent;
-      color:var(--text);
-      font-size:15px;
-      line-height:1.4;
-      padding:2px 0 0;
-      font-family: inherit;
+      width:100%; border:none; outline:none; background:transparent; color:var(--text);
+      font-size:15px; line-height:1.4; padding:2px 0 0; font-family: inherit;
     }
     textarea{ min-height:96px; resize:vertical; }
     .field:focus-within{
@@ -167,38 +93,28 @@
     }
 
     .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:flex-end;
-      margin-top:6px;
-      padding-top:16px;
+      display:flex; flex-wrap:wrap; gap:12px; justify-content:flex-end;
+      margin-top:6px; padding-top:16px;
       border-top:1px dashed color-mix(in srgb, var(--stroke) 80%, transparent);
     }
 
     .btn{
-      border:none;
-      cursor:pointer;
-      padding:12px 16px;
-      border-radius:14px;
-      font-weight:800;
-      letter-spacing:.03em;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+      border:none; cursor:pointer; padding:12px 16px; border-radius:14px; font-weight:800;
+      letter-spacing:.03em; display:inline-flex; align-items:center; gap:10px;
       transition: transform .12s ease, filter .12s ease, opacity .12s ease;
       color:#07120a;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 95%, white), color-mix(in srgb, var(--accent2) 85%, white));
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--accent) 95%, white),
+        color-mix(in srgb, var(--accent2) 85%, white)
+      );
       box-shadow: 0 12px 24px rgba(0,0,0,.25);
     }
     .btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
     .btn:active{ transform: translateY(0); opacity:.92; }
 
     .btn.secondary{
-      color:var(--text);
-      background: rgba(255,255,255,.08);
-      border:1px solid var(--stroke);
-      box-shadow:none;
+      color:var(--text); background: rgba(255,255,255,.08);
+      border:1px solid var(--stroke); box-shadow:none;
     }
     .btn.secondary:hover{ background: rgba(255,255,255,.12); filter:none; }
 
@@ -206,141 +122,74 @@
 
     /* ===== Modal ===== */
     .modal-backdrop{
-      position:fixed;
-      inset:0;
-      background: var(--overlay);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:999;
+      position:fixed; inset:0; background: var(--overlay);
+      display:none; align-items:center; justify-content:center; padding:18px; z-index:999;
     }
     .modal-backdrop.show{ display:flex; }
 
     .modal{
-      width:min(980px, 96vw);
-      max-height: min(80vh, 720px);
-      overflow:hidden;
-      border-radius: 18px;
-      border:1px solid var(--stroke);
-      background: var(--modalbg);
-      backdrop-filter: blur(10px);
+      width:min(980px, 96vw); max-height: min(80vh, 720px); overflow:hidden;
+      border-radius: 18px; border:1px solid var(--stroke);
+      background: var(--modalbg); backdrop-filter: blur(10px);
       box-shadow: 0 24px 70px rgba(0,0,0,.55);
-      display:flex;
-      flex-direction:column;
+      display:flex; flex-direction:column;
     }
     .modal-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:14px 16px;
-      border-bottom:1px solid var(--stroke);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:14px 16px; border-bottom:1px solid var(--stroke);
     }
     .modal-title{
-      margin:0;
-      font-weight:900;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      font-size:14px;
+      margin:0; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:14px;
     }
-    .modal-body{
-      padding:14px 16px 16px;
-      overflow:auto;
-    }
+    .modal-body{ padding:14px 16px 16px; overflow:auto; }
+
     .toolbar{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      align-items:center;
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center;
       margin-bottom:12px;
     }
     .search{
-      flex:1 1 260px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--stroke);
+      flex:1 1 260px; display:flex; gap:10px; align-items:center;
+      padding:10px 12px; border-radius:14px; border:1px solid var(--stroke);
       background: rgba(255,255,255,.06);
     }
-    body[data-theme="light"] .search{
-      background: rgba(2,6,23,.03);
-    }
+    body[data-theme="light"] .search{ background: rgba(2,6,23,.03); }
     .search input{
-      border:none;
-      outline:none;
-      background:transparent;
-      color:var(--text);
-      width:100%;
-      font-size:14px;
+      border:none; outline:none; background:transparent; color:var(--text);
+      width:100%; font-size:14px;
     }
     .pill{
-      flex:0 0 auto;
-      font-size:12px;
-      color:color-mix(in srgb, var(--text) 80%, transparent);
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      padding:8px 10px;
-      border-radius:999px;
-      white-space:nowrap;
+      flex:0 0 auto; font-size:12px; color:color-mix(in srgb, var(--text) 80%, transparent);
+      border:1px solid var(--stroke); background: rgba(255,255,255,.06);
+      padding:8px 10px; border-radius:999px; white-space:nowrap;
     }
 
     table{
-      width:100%;
-      border-collapse:separate;
-      border-spacing:0;
-      overflow:hidden;
-      border-radius:16px;
-      border:1px solid var(--stroke);
+      width:100%; border-collapse:separate; border-spacing:0; overflow:hidden;
+      border-radius:16px; border:1px solid var(--stroke);
       background: rgba(255,255,255,.03);
     }
-    body[data-theme="light"] table{
-      background: rgba(2,6,23,.02);
-    }
+    body[data-theme="light"] table{ background: rgba(2,6,23,.02); }
     thead th{
-      position:sticky;
-      top:0;
-      background: var(--theadbg);
-      border-bottom:1px solid var(--stroke);
-      text-align:left;
-      font-size:12px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
+      position:sticky; top:0; background: var(--theadbg); border-bottom:1px solid var(--stroke);
+      text-align:left; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
       color:color-mix(in srgb, var(--text) 85%, transparent);
-      padding:12px 12px;
-      z-index:1;
+      padding:12px 12px; z-index:1;
     }
     tbody td{
-      padding:12px 12px;
-      border-bottom:1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
-      vertical-align:top;
-      font-size:14px;
-      color:color-mix(in srgb, var(--text) 92%, transparent);
+      padding:12px 12px; border-bottom:1px solid color-mix(in srgb, var(--stroke) 70%, transparent);
+      vertical-align:top; font-size:14px; color:color-mix(in srgb, var(--text) 92%, transparent);
       word-break:break-word;
     }
-    tbody tr:hover td{
-      background: rgba(255,255,255,.04);
-    }
+    tbody tr:hover td{ background: rgba(255,255,255,.04); }
 
-    .col-actions{
-      width:120px;
-      white-space:nowrap;
-    }
+    /* FIX: col-actions jangan flex (biar header "AKSI" aman) */
+    .col-actions{ width:170px; white-space:nowrap; }
+    .action-wrap{ display:flex; gap:8px; align-items:center; }
+
     .mini{
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      cursor:pointer;
-      font-weight:800;
-      font-size:12px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
+      padding:8px 10px; border-radius:12px; border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06); color:var(--text); cursor:pointer;
+      font-weight:800; font-size:12px; display:inline-flex; gap:8px; align-items:center;
     }
     .mini:hover{ background: rgba(255,255,255,.10); }
     .mini.danger{
@@ -350,26 +199,19 @@
 
     @media (max-width: 540px){
       .hide-sm{ display:none; }
-      .col-actions{ width:92px; }
+      .col-actions{ width:140px; }
       tbody td, thead th{ padding:10px 10px; }
     }
 
-    /* ===== Notice Tengah (pengganti alert) ===== */
+    /* ===== Notice Tengah (pengganti alert + confirm) ===== */
     .notice-backdrop{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:2000;
-      background: rgba(0,0,0,.55);
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      padding:18px; z-index:2000; background: rgba(0,0,0,.55);
     }
     .notice-backdrop.show{ display:flex; }
 
     .notice{
-      width:min(420px, 92vw);
-      border-radius:16px;
+      width:min(420px, 92vw); border-radius:16px;
       border:1px solid rgba(255,255,255,.18);
       background: rgba(10,15,25,.92);
       backdrop-filter: blur(10px);
@@ -381,29 +223,26 @@
       background: rgba(255,255,255,.92);
       border:1px solid rgba(2,6,23,.12);
     }
-    .notice-title{
-      font-weight:900;
-      letter-spacing:.04em;
-      margin-bottom:6px;
-    }
+    .notice-title{ font-weight:900; letter-spacing:.04em; margin-bottom:6px; }
     .notice-msg{
       color: color-mix(in srgb, var(--text) 85%, transparent);
-      margin-bottom:12px;
-      line-height:1.45;
+      margin-bottom:12px; line-height:1.45;
     }
+    .notice-actions{ display:flex; gap:10px; }
     .notice-btn{
-      width:100%;
-      border:none;
-      cursor:pointer;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:900;
-      letter-spacing:.03em;
+      flex:1 1 auto;
+      border:none; cursor:pointer; padding:10px 12px; border-radius:12px;
+      font-weight:900; letter-spacing:.03em;
       color:#07120a;
       background: linear-gradient(135deg,
         color-mix(in srgb, var(--accent) 95%, white),
         color-mix(in srgb, var(--accent2) 85%, white)
       );
+    }
+    .notice-btn.cancel{
+      background: rgba(255,255,255,.10);
+      color: var(--text);
+      border:1px solid var(--stroke);
     }
   </style>
 </head>
@@ -414,12 +253,12 @@
       <div class="header">
         <div class="titlebox">
           <h1 class="title">Form Data Mahasiswa</h1>
-          <p class="subtitle">Klik <b>SIMPAN</b> untuk menyimpan. Klik <b>LIHAT DATA</b> untuk melihat tabel pendaftaran.</p>
+
         </div>
 
-        <div class="top-actions">
+        <div class="mid-actions">
           <button class="toggle" type="button" id="btnTheme" aria-label="Ganti tema">
-            <span id="themeIcon">🌙</span>
+            
             <span id="themeText">Gelap</span>
           </button>
         </div>
@@ -435,8 +274,7 @@
 
             <div class="field">
               <label for="nim">NIM</label>
-              <!-- penting: pattern angka -->
-              <input id="nim" name="nim" type="text" inputmode="numeric" placeholder="Contoh: 15-2025-000"
+              <input id="nim" name="nim" type="text" inputmode="numeric" placeholder="Contoh: 152025000"
                      pattern="[0-9]+" title="NIM harus angka saja" required />
             </div>
 
@@ -457,7 +295,6 @@
 
             <div class="field full">
               <label for="nohp">No HP</label>
-              <!-- penting: pattern angka -->
               <input id="nohp" name="nohp" type="tel" inputmode="numeric" placeholder="Contoh: 081234567890"
                      pattern="[0-9]+" title="No HP harus angka saja" required />
             </div>
@@ -471,7 +308,7 @@
               LIHAT DATA
             </button>
 
-            <button class="btn secondary" type="reset">
+            <button class="btn secondary" type="reset" id="btnReset">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12a9 9 0 1 1-2.64-6.36"/>
                 <path d="M21 3v7h-7"/>
@@ -479,7 +316,7 @@
               RESET
             </button>
 
-            <button class="btn" type="submit">
+            <button class="btn" type="submit" id="btnSimpan">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
                 <path d="M17 21v-8H7v8"/>
@@ -549,12 +386,15 @@
     </div>
   </div>
 
-  <!-- ===== Notice Tengah (pengganti alert) ===== -->
+  <!-- ===== Notice Tengah (pengganti alert + confirm) ===== -->
   <div class="notice-backdrop" id="noticeBackdrop" aria-hidden="true">
     <div class="notice" role="status" aria-live="polite">
       <div class="notice-title" id="noticeTitle">Info</div>
       <div class="notice-msg" id="noticeMsg">...</div>
-      <button class="notice-btn" type="button" id="noticeOk">OK</button>
+      <div class="notice-actions">
+        <button class="notice-btn" type="button" id="noticeOk">OK</button>
+        <button class="notice-btn cancel" type="button" id="noticeCancel">Batal</button>
+      </div>
     </div>
   </div>
 
@@ -572,9 +412,10 @@
     const searchInput = document.getElementById("searchInput");
     const btnHapusSemua = document.getElementById("btnHapusSemua");
 
-    // input numeric
     const inputNim = document.getElementById("nim");
     const inputNohp = document.getElementById("nohp");
+
+    let editingId = null;
 
     // ===== THEME =====
     const btnTheme = document.getElementById("btnTheme");
@@ -584,68 +425,106 @@
     function setTheme(theme){
       document.body.setAttribute("data-theme", theme);
       localStorage.setItem(THEME_KEY, theme);
-
       if(theme === "light"){
-        themeIcon.textContent = "☀️";
         themeText.textContent = "Terang";
       }else{
-        themeIcon.textContent = "🌙";
         themeText.textContent = "Gelap";
       }
     }
-
     function initTheme(){
       const saved = localStorage.getItem(THEME_KEY);
-      if(saved === "light" || saved === "dark"){
-        setTheme(saved);
-        return;
-      }
+      if(saved === "light" || saved === "dark"){ setTheme(saved); return; }
       const preferLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
       setTheme(preferLight ? "light" : "dark");
     }
-
     btnTheme.addEventListener("click", () => {
       const current = document.body.getAttribute("data-theme") || "dark";
       setTheme(current === "dark" ? "light" : "dark");
     });
 
-    // ===== Notice Tengah (pengganti alert) =====
+    // ===== Notice (alert + confirm custom) =====
     const noticeBackdrop = document.getElementById("noticeBackdrop");
     const noticeTitle = document.getElementById("noticeTitle");
     const noticeMsg = document.getElementById("noticeMsg");
     const noticeOk = document.getElementById("noticeOk");
+    const noticeCancel = document.getElementById("noticeCancel");
 
-    function showNotice(title, msg){
-      noticeTitle.textContent = title;
-      noticeMsg.textContent = msg;
+    let noticeResolve = null;
+    let noticeMode = "alert"; // "alert" | "confirm"
+
+    function openNotice(){
       noticeBackdrop.classList.add("show");
       noticeBackdrop.setAttribute("aria-hidden","false");
       noticeOk.focus();
     }
-
     function closeNotice(){
       noticeBackdrop.classList.remove("show");
       noticeBackdrop.setAttribute("aria-hidden","true");
     }
 
-    noticeOk.addEventListener("click", closeNotice);
-    noticeBackdrop.addEventListener("click", (e) => {
-      if(e.target === noticeBackdrop) closeNotice();
-    });
+    function showNotice(title, msg){
+      noticeMode = "alert";
+      noticeResolve = null;
+      noticeTitle.textContent = title ?? "Info";
+      noticeMsg.textContent = msg ?? "";
+      noticeCancel.style.display = "none"; // hide cancel
+      openNotice();
+    }
 
-    // ESC untuk close modal tabel atau notice
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape"){
-        if(modalBackdrop.classList.contains("show")) closeModal();
-        if(noticeBackdrop.classList.contains("show")) closeNotice();
+    function confirmNotice(title, msg){
+      noticeMode = "confirm";
+      noticeTitle.textContent = title ?? "Konfirmasi";
+      noticeMsg.textContent = msg ?? "";
+      noticeCancel.style.display = "inline-block";
+      openNotice();
+
+      return new Promise((resolve) => { noticeResolve = resolve; });
+    }
+
+    noticeOk.addEventListener("click", () => {
+      closeNotice();
+      if(noticeMode === "confirm"){
+        const r = noticeResolve; noticeResolve = null;
+        r?.(true);
       }
     });
 
-    // ===== helper: hanya angka saat mengetik (tetap ada validasi final) =====
+    noticeCancel.addEventListener("click", () => {
+      closeNotice();
+      if(noticeMode === "confirm"){
+        const r = noticeResolve; noticeResolve = null;
+        r?.(false);
+      }
+    });
+
+    noticeBackdrop.addEventListener("click", (e) => {
+      if(e.target === noticeBackdrop){
+        closeNotice();
+        if(noticeMode === "confirm"){
+          const r = noticeResolve; noticeResolve = null;
+          r?.(false);
+        }
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        if(modalBackdrop.classList.contains("show")) closeModal();
+        if(noticeBackdrop.classList.contains("show")){
+          closeNotice();
+          if(noticeMode === "confirm"){
+            const r = noticeResolve; noticeResolve = null;
+            r?.(false);
+          }
+        }
+      }
+    });
+
+    // ===== helper: hanya angka saat mengetik =====
     function enforceDigitsOnly(el){
       el.addEventListener("input", () => {
         const before = el.value;
-        const after = before.replace(/\D/g, ""); // buang selain angka
+        const after = before.replace(/\D/g, "");
         if(before !== after) el.value = after;
       });
       el.addEventListener("paste", (e) => {
@@ -663,23 +542,17 @@
       try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
       catch{ return []; }
     }
-
     function saveData(arr){
       localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
     }
-
     function escapeHtml(str){
       return String(str ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+        .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;").replaceAll("'","&#039;");
     }
 
     function renderTable(filterText = ""){
       const data = loadData();
-
       const q = filterText.trim().toLowerCase();
       const filtered = q
         ? data.filter(item => {
@@ -711,14 +584,24 @@
           <td class="hide-sm">${escapeHtml(item.nohp)}</td>
           <td class="hide-sm">${escapeHtml(item.alamat)}</td>
           <td class="col-actions">
-            <button class="mini danger" type="button" data-delete="${item._id}">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 6h18"></path>
-                <path d="M8 6V4h8v2"></path>
-                <path d="M19 6l-1 14H6L5 6"></path>
-              </svg>
-              Hapus
-            </button>
+            <div class="action-wrap">
+              <button class="mini" type="button" data-edit="${item._id}">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+                </svg>
+                Edit
+              </button>
+
+              <button class="mini danger" type="button" data-delete="${item._id}">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18"></path>
+                  <path d="M8 6V4h8v2"></path>
+                  <path d="M19 6l-1 14H6L5 6"></path>
+                </svg>
+                Hapus
+              </button>
+            </div>
           </td>
         </tr>
       `).join("");
@@ -731,81 +614,115 @@
       renderTable("");
       searchInput.focus();
     }
-
     function closeModal(){
       modalBackdrop.classList.remove("show");
       modalBackdrop.setAttribute("aria-hidden","true");
     }
 
-    // tombol LIHAT DATA
     btnLihat.addEventListener("click", openModal);
 
-    // close modal tabel
     btnClose.addEventListener("click", closeModal);
     modalBackdrop.addEventListener("click", (e) => {
       if(e.target === modalBackdrop) closeModal();
     });
 
-    // cari
-    searchInput.addEventListener("input", () => {
+    searchInput.addEventListener("input", () => renderTable(searchInput.value));
+
+    // hapus semua (tanpa confirm bawaan browser)
+    btnHapusSemua.addEventListener("click", async () => {
+      const ok = await confirmNotice("Konfirmasi", "Yakin mau hapus semua data pendaftaran?");
+      if(!ok) return;
+
+      saveData([]);
+      editingId = null;
       renderTable(searchInput.value);
+      showNotice("Info", "Semua data berhasil dihapus.");
     });
 
-    // hapus 1 data
+    // edit / hapus per baris
     tbodyData.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-delete]");
-      if(!btn) return;
+      const btnEdit = e.target.closest("[data-edit]");
+      if(btnEdit){
+        const id = btnEdit.getAttribute("data-edit");
+        const data = loadData();
+        const item = data.find(x => x._id === id);
+        if(!item) return;
 
-      const id = btn.getAttribute("data-delete");
+        document.getElementById("nama").value = item.nama || "";
+        document.getElementById("nim").value = item.nim || "";
+        document.getElementById("kelas").value = item.kelas || "";
+        document.getElementById("jurusan").value = item.jurusan || "";
+        document.getElementById("alamat").value = item.alamat || "";
+        document.getElementById("nohp").value = item.nohp || "";
+
+        editingId = id;
+        closeModal();
+        document.getElementById("nama").focus();
+        showNotice( "Silakan ubah data pada form, lalu klik SIMPAN untuk memperbarui.");
+        return;
+      }
+
+      const btnDelete = e.target.closest("[data-delete]");
+      if(!btnDelete) return;
+
+      const id = btnDelete.getAttribute("data-delete");
       const data = loadData();
       const next = data.filter(x => x._id !== id);
       saveData(next);
+      if(editingId === id) editingId = null;
+
       renderTable(searchInput.value);
+      showNotice( "Data berhasil dihapus.");
     });
 
-    // hapus semua
-    btnHapusSemua.addEventListener("click", () => {
-      if(confirm("Yakin mau hapus semua data pendaftaran?")){
-        saveData([]);
-        renderTable(searchInput.value);
-      }
-    });
-
-    // ===== VALIDASI FINAL SAAT SIMPAN =====
-    function isDigitsOnly(s){
-      return /^\d+$/.test(String(s || "").trim());
-    }
+    // ===== VALIDASI + SIMPAN =====
+    function isDigitsOnly(s){ return /^\d+$/.test(String(s || "").trim()); }
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      // validasi HTML built-in dulu (required, pattern)
       if(!form.reportValidity()) return;
 
       const fd = new FormData(form);
       const item = Object.fromEntries(fd.entries());
 
-      // VALIDASI ANGKA (WAJIB)
       if(!isDigitsOnly(item.nim)){
-        showNotice("Gagal ❌", "NIM harus diisi angka saja. Data tidak disimpan.");
+        showNotice("Gagal ", "NIM harus diisi angka saja. Data tidak disimpan.");
         inputNim.focus();
         return;
       }
       if(!isDigitsOnly(item.nohp)){
-        showNotice("Gagal ❌", "No HP harus diisi angka saja. Data tidak disimpan.");
+        showNotice("Gagal ", "No HP harus diisi angka saja. Data tidak disimpan.");
         inputNohp.focus();
         return;
       }
 
-      // simpan
-      item._id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
       const data = loadData();
+
+      if(editingId){
+        const idx = data.findIndex(x => x._id === editingId);
+        if(idx !== -1){
+          item._id = editingId;
+          data[idx] = item;
+          saveData(data);
+
+          editingId = null;
+          showNotice( "Data berhasil diperbarui.");
+          form.reset();
+          return;
+        }else{
+          editingId = null;
+        }
+      }
+
+      item._id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
       data.unshift(item);
       saveData(data);
 
-      showNotice("Berhasil ✅", "Data berhasil disimpan!");
+      showNotice( "Data berhasil disimpan.");
       form.reset();
     });
+
+    form.addEventListener("reset", () => { editingId = null; });
 
     // awal
     initTheme();
